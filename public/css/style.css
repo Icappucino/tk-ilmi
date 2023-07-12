@@ -1,0 +1,492 @@
+/* ========================= */
+/* ======={ License }======= */
+/* =========================
+// Copyright && Icappucino 2023
+// Github : https://github.com/Icappucino
+// Instagram : https://www.instagram.com/icappucino_/
+// Powered by Spacecode.id
+// Instagram Vendor : https://www.instagram.com/spacecode.id/
+=============================*/
+
+/* ========================= */
+/* ===={ DOCUMENT ROOT }==== */
+/* ========================= */
+:root{
+
+    /* ===={ ROOT Color }==== */
+
+    --bg:#ff8a00;
+    --primary: #ffd900;
+    --secondary: #f5f5f5;
+    --dark: #2d2929;
+    --tombol: #176B87;
+    --hver: #45CFDD;
+    --rvsi-1: #f18f01;
+    --rvsi-2: #051951;
+    --rvsi-3: #f5f5f5;
+
+    /* ===={ ROOT Size }==== */
+
+    --ttle: 64px;
+    --TL: 72px;
+    --HL1: 56px;
+    --HL2: 40px;
+    --HL3: 32px;
+    --HL4: 20px;
+    --BL: 18px;
+    --BM: 16px;
+    --BS: 14px;
+    --Bus: 12px;
+    --F-B: 16px;
+    --brdr: 105px;
+    /* ==========================
+
+    Reference {
+    -- ttle for Title --
+    -- TL for Tagline --
+    -- HL for Headline --
+    -- BL for Body Large --
+    -- BM for Body Medium --
+    -- BS for Body Small --
+    -- F-B for Font Buttom --
+    }
+
+    ============================== */
+
+    /* ===={ Font ROOT }==== */
+
+    --font-all: 'Inter', sans-serif;
+    --font-primary: 'Poppins', sans-serif;
+
+    /* ===={ Wight ROOT }==== */
+    --w-1: 700;
+    --w-2: 500;
+    --w-3: bold;
+
+    /* ===={ Z-Index ROOT }==== */
+    --i-primary: 99;
+    --nvbr: 5;
+    --z-all: 3;
+    --z-img: 2;
+
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("/img/banner-new.jpg");
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+*{
+    z-index: var(--z-all);
+    font-family: var(--font-all);
+}
+h2{
+    font-size: var(--HL2);
+    font-weight: var(--w-2);
+}
+h3{
+    padding-bottom: 15px;
+}
+/* ============================== */
+/* ===={ Responsive Setting }==== */
+/* ============================== */
+
+/* ===={ PC Screen }==== */
+@media  screen and (max-width: 922px) {
+
+}
+/* ===={ Tablet Screen }==== */
+@media screen and (max-width: 576px){
+    .tagline{
+        line-height: var(--HL1);
+        text-align: center;
+    }
+    .img-hero{
+        width: 100%;
+        height: 250px;
+        opacity: 1;
+    }
+    h1{
+        font-size: var(--HL3);
+    }
+    h2{
+        font-size: var(--HL3);
+    }
+    .sub-title{
+        font-size: var(--BL);
+    }
+    .sub-content{
+        font-size: var(--BM);
+    }
+    .card-profile{
+        margin: 15px 0;
+    }
+    .card-jenjang{
+        margin: 15px 0;
+    }
+    .unit{
+        background-color: var(--secondary);
+        box-sizing: border-box;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin: 10px 0;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+
+    }
+    .card-img-top{
+        width: 30px;
+        height: 70px;
+    }
+    .unit-card{
+        width: 4rem;
+        margin: 10px;
+    }
+}
+/* ===={ Smartphone Screen }==== */
+@media screen and (max-width: 350px){
+    .kurmer{
+        overflow-y: scroll;
+    }
+    .misi-3{
+        overflow-y: scroll;
+    }
+    .tagline{
+        line-height: var(--HL4);
+        text-align: center;
+    }
+    .title-tagline{
+        font-size: var(--BM);
+    }
+    .sb-ttl{
+        font-size: var(--Bus);
+        overflow: hidden;
+    }
+}
+/* ========================= */
+/* ===={ Button Setting }==== */
+/* ========================= */
+
+/* ===={ Button Navbar }==== */
+.button-primary{
+    width: 133px;
+    height: 40px;
+    background-color: var(--rvsi-2);
+    color: var(--secondary);
+    font-weight: var(--w-1);
+    border: none;
+    font-size: var(--F-B);
+}
+/* ===={ Button Hero }==== */
+.button-lg-primary{
+    width: 200px;
+    height: 50px;
+    color: var(--dark);
+    background-color: var(--primary);
+    font-size: var(--BM);
+    font-weight: var(--w-3);
+    border: none;
+}
+/* ===={ Button Card }==== */
+.button-card a{
+    width: var(--HL2);
+}
+/* ===={ Button Settings }==== */
+.button-primary:hover{
+    background-color: var(--rvsi-1);
+    color: var(--rvsi-3);
+}
+.button-lg-primary:hover{
+    background-color: var(--rvsi-2);
+    color: var(--rvsi-3);
+}
+/* ================================ */
+/* ===={ Button Setting Ended }==== */
+/* ================================ */
+
+/* ========================= */
+/* ===={ Navbar Section }==== */
+/* ========================= */
+.navbar{
+    z-index: var(--nvbr);
+    background-color: var(--rvsi-1);
+}
+.navbar-brand{
+    font-weight: var(--HL3);
+    font-size: var(--HL2);
+}
+.nav-link{
+    color: var(--rvsi-2);
+    font-family: var(--font-all);
+    font-size: var(--BL);
+    font-weight: var(--w-3);
+    cursor: pointer;
+}
+.nav-link.active{
+    font-weight: var(--w-1);
+    color: var(--rvsi-2);
+}
+.nav-link.active:hover,
+.nav-link:hover{
+    border-bottom: 2px solid var(--primary);
+    color: var(--rvsi-2);
+}
+.nav-color{
+    background-color: var(--tombol);
+    transition: all ease-in-out .3s;
+}
+.bg-transparent{
+    transition: all ease-in .3s;
+}
+/* ========================= */
+/* ===={ Hero Section }==== */
+/* ========================= */
+#hero{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+#hero .container{
+    padding: 0;
+}
+.hero-tagline{
+    position: absolute;
+    top: 40%;
+}
+.hero-tagline h1{
+    color: var(--secondary);
+    font-size: var(--ttle);
+    font-weight: var(--w-1);
+    line-height: var(--TL);
+}
+.hero-tagline p{
+    font-size: var(--HL4);
+    margin-top: var(--HL3);
+    margin-bottom: var(--HL4);
+    line-height: var(--HL3);
+}
+.sb-ttl{
+    color: var(--secondary);
+}
+/* ========================= */
+/* ===={ Profile Section }==== */
+/* ========================= */
+#profsek{
+    padding: 150px 0;
+    background-color: var(--rvsi-2);
+    font-family: var(--font-all);
+}
+.ttl-head, .sub-title, .sub-content, .tg-title{
+    color: var(--secondary);
+}
+.card-profile{
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    background-color: var(--secondary);
+    padding: var(--HL2);
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.05);
+}
+.circle-icon{
+    width: var(--TL);
+    height: var(--TL);
+    background-color: var(--bg);
+    border-radius: 50%;
+}
+.img-icons{
+    height: var(--HL2);
+}
+.title-content{
+    border-bottom: 2px solid var(--bg);
+    font-size: var(--BL);
+}
+.title-content-2{
+    border-bottom: 2px solid var(--bg);
+    font-size: var(--BL);
+}
+/* ===={ Hover Setting }==== */
+.card-profile:hover{
+    width: 100%;
+    height: 270px;
+    border-radius: 15px;
+    background-color: var(--tombol);
+    padding: var(--HL2);
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.05);
+    color: var(--secondary);
+
+    transition: all .5s ease-out;
+}
+.card-profile:hover .circle-icon{
+    background-color: var(--primary);
+}
+.card-profile:hover .title-content{
+    border-bottom: 2px solid var(--primary);
+    font-size: var(--BL);
+}
+.card-profile:hover .title-content-2{
+    border-bottom: 2px solid var(--primary);
+    font-size: var(--BL);
+}
+/* ===={ Text Setting }==== */
+.sub-title{
+    font-size: var(--HL3);
+    padding: 5px;
+}
+.tg-title{
+    font-size: var(--HL3);
+    padding: 10px;
+    border-bottom: 2px solid var(--rvsi-3);
+    width: var(--brdr);
+}
+.sub-content{
+    font-size: var(--HL4);
+}
+/* ===={ Card - Unit Sekolah Setting }==== */
+.card-img-top{
+    width: 100%;
+    height: 320px;
+}
+.card:hover{
+    background-color: var(--tombol);
+    transition: all .5s ease-in;
+    color: var(--secondary);
+    font-weight: var(--w-3);
+}
+/* ========================= */
+/* ===={ Jenjang Section }==== */
+/* ========================= */
+
+#jenjang{
+    padding: 100px 0;
+    background-color: var(--rvsi-2);
+    font-family: var(--font-all);
+    height: 180vh;
+}
+.jj-ttl{
+    color: var(--rvsi-3);
+}
+.card-jenjang{
+    width: 100%;
+    height: 360px;
+    border-radius: 15px;
+    background-color: var(--secondary);
+    padding: var(--HL2);
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.05);
+}
+.circle-icon-jenjang{
+    width: var(--TL);
+    height: var(--TL);
+    background-color: var(--bg);
+    border-radius: 50%;
+}
+.img-icons-jenjang{
+    height: var(--HL2);
+}
+.title-content-jenjang{
+    border-bottom: 2px solid var(--bg);
+    font-size: var(--BL);
+}
+.title-content-jenjang-2{
+    border-bottom: 2px solid var(--bg);
+    font-size: var(--BM);
+}
+.title-content-2-jenjang{
+    border-bottom: 2px solid var(--bg);
+    font-size: var(--BL);
+}
+/* ===={ Hover Setting }==== */
+.card-jenjang:hover{
+    width: 100%;
+    height: 370px;
+    border-radius: 15px;
+    background-color: var(--tombol);
+    padding: var(--HL2);
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.05);
+    color: var(--secondary);
+
+    transition: all .5s ease-out;
+}
+.card-jenjang:hover .circle-icon-jenjang{
+    background-color: var(--primary);
+}
+.card-jenjang:hover .title-content-jenjang{
+    border-bottom: 2px solid var(--primary);
+    font-size: var(--BL);
+}
+.card-jenjang:hover .title-content-2-jenjang{
+    border-bottom: 2px solid var(--primary);
+    font-size: var(--BL);
+}
+.sub-title-jenjang{
+    font-size: var(--HL4);
+    padding: 5px;
+}
+
+#accordionExample {
+    padding-top: 50px;
+}
+/* ========================= */
+/* ===={ Footer Section }==== */
+/* ========================= */
+#footer{
+    background-color: var(--rvsi-1);
+}
+.p-footer{
+    width: 60%;
+}
+.h-footer{
+    color: var(--dark);
+    background-color: var(--primary);
+    width: 300px;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.bx-envelope{
+    color: var(--rvsi-2);
+    border: 2px solid var(--rvsi-2);
+    padding: 5px;
+    border-radius: 50px;
+    font-size: var(--HL2);
+}
+.bxl-facebook{
+    color: var(--rvsi-2);
+    border: 2px solid var(--rvsi-2);
+    padding: 5px;
+    border-radius: 50px;
+    font-size: var(--HL2);
+}
+.bxl-instagram{
+    color: var(--rvsi-2);
+    border: 2px solid var(--rvsi-2);
+    padding: 5px;
+    border-radius: 50px;
+    font-size: var(--HL2);
+}
+.bi-twitter{
+    font-size: var(--HL2);
+    padding-right: 5px;
+}
+
+.bx-envelope:hover,
+.bxl-facebook:hover,
+.bxl-instagram:hover{
+    color: var(--hver);
+}
+
+.follow-us{
+    font-size: var(--HL2);
+}
+.cntc{
+    padding-top: 10px;
+}
+.mail{
+    color: var(--dark);
+    text-decoration: none;
+}
