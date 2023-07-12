@@ -14,8 +14,7 @@
     <h2 class="follow-us"><i class="bi bi-twitter"></i>Follow us</h2>
     <div class="social-links mt-3">
       <a href="mailto:spacecode293@gmail.com" class="twitter" target="_blank"><i class='bx bx-envelope'></i></a>
-      <a href="https://www.facebook.com/LH354Y" class="facebook"  target="_blank"><i class="bx bxl-facebook"></i></a>
-      <a href="https://www.instagram.com/spacecode.id/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+      <a href="https://www.facebook.com/LH354Y" class="facebook"  target="_blank"><i class="bi bi-whatsapp"></i></a>
     </div>
     <div class="cntc">
         <strong>Phone:</strong> Coming soon ..<br>

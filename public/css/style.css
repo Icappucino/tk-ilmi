@@ -450,9 +450,7 @@ h3{
 
 .bx-envelope{
     color: var(--rvsi-2);
-    border: 2px solid var(--rvsi-2);
     padding: 5px;
-    border-radius: 50px;
     font-size: var(--HL2);
 }
 .bxl-facebook{
@@ -474,9 +472,15 @@ h3{
     padding-right: 5px;
 }
 
+.bi-whatsapp{
+    color: var(--rvsi-2);
+    padding: 5px;
+    font-size: var(--HL2);
+}
 .bx-envelope:hover,
 .bxl-facebook:hover,
-.bxl-instagram:hover{
+.bxl-instagram:hover,
+.bi-whatsapp:hover{
     color: var(--hver);
 }
 
