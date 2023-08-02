@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Models\Kategori;
 
 class KategoriController extends Controller
@@ -12,9 +13,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategoris = Kategori::all();
-
-        return view('kategoriDashboard.index', compact('kategoris'));
+        $kategoriList = DB::table('kategori')->get();
+        return view('kategori.index', compact('kategoriList'));
     }
 
     /**
@@ -22,7 +22,8 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('kategoriDashboard.create');
+        // Mengarahkan kehalaman form
+        return view('kategori.create');
     }
 
     /**
@@ -30,13 +31,13 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'jenis_transaksi' => $request->input('jenis_transaksi'),
-        ];
-
-        Kategori::create($data);
-
-        return redirect('/kategori-dashboard');
+                // Proses input data
+                DB::table('katagori')->insert(
+                    [
+                        'jenis_transaksi'=>$request->jenis_pembayaran,
+                    ]
+                );
+                return redirect('/Kategori');
     }
 
     /**
@@ -44,8 +45,10 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        $kategori = Kategori::find($id);
-        return view('kategoriDashboard.show', compact('kategori'));
+        // menampilkan details pengarang
+        $kategoriList = DB::table('kategori')
+                ->where('id','=',$id)->get();
+        return view('kategori.show', compact('kategoriList'));
     }
 
     /**
@@ -53,8 +56,10 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori::find($id);
-        return view('kategoriDashboard.edit', compact('kategori'));
+        // diarahkan ke halaman edit data
+        $data = DB::table('katagori')
+                ->where('id','=',$id)->get();
+        return view('kategori.form_edit',compact('data'));
     }
 
     /**
@@ -62,13 +67,13 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'jenis_transaksi' => $request->input('jenis_transaksi'),
-        ];
-
-        Kategori::where('id', $id)->update($data);
-
-        return redirect('/kategori-dashboard');
+                // proses ubah data
+                DB::table('kategori')->where('id','=',$id)->update(
+                    [
+                        'jenis_transaksi'=>$request->jenis_pembayaran,
+                    ]
+                );
+                return redirect('/Kategori'.'/'.$id);
     }
 
     /**
@@ -76,9 +81,8 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        // Menghapus data
-        DB::table('user')->where('id', $id)->delete();
-
-        return redirect('/Dashboard-user');
+        // menghapus data
+        DB::table('kategori')->where('id',$id)->delete();
+        return redirect('/Kategori');
     }
 }

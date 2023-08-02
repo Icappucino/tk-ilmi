@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use Illuminate\Http\Request;
+use DB;
 use App\Models\Transaksi;
 
 class TransaksiController extends Controller
@@ -12,9 +14,14 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksis = Transaksi::all();
+        $transaksiList = DB::table('transaksi')
+        ->join('siswa', 'siswa.id_siswa', '=', 'transaksi.id_siswa')
+        ->join('kategori', 'kategori.id_kategori', '=', 'transaksi.id_kategori') // Tambahkan alias pada tabel kategori
+        ->select('transaksi.*', 'siswa.nama_siswa AS sw', 'kategori.jenis_transaksi AS jt')
+        ->get();
 
-        return view('transaksiDashboard.index', compact('transaksis'));
+    return view('transaksi.index', compact('transaksiList'));
+
     }
 
     /**
@@ -22,8 +29,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $kategoris = Kategori::all();
-        return view('transaksiDashboard.create', compact('kategoris'));
+        // Mengarahkan kehalaman form
+        return view('transaksi.create');
     }
 
     /**
@@ -31,26 +38,43 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'kategori_id' => $request->input('kategori_id'),
-            'nominal_transaksi' => $request->input('nominal_transaksi'),
-            'tanggal_transaksi' => $request->input('tanggal_transaksi'),
-            'waktu_transaksi' => $request->input('waktu_transaksi'),
-            'status_pembayaran' => $request->input('status_pembayaran'),
-        ];
+        $request->validate([
+            'siswa_id' => 'required', // Pastikan 'siswa_id' tidak boleh kosong (null)
+            'resi' => 'image|mimes:png,jpg|max:5120',
+        ]);
 
-        Transaksi::create($data);
+        // Proses input foto
+        if ($request->hasFile('resi')) {
+            $fileResi = $request->nama . '.' . $request->file('resi')->getClientOriginalExtension();
+            $request->file('resi')->move(public_path('img'), $fileResi);
+        } else {
+            $fileResi = '';
+        }
 
-        return redirect('/transaksi-dashboard');
+        // Proses input data
+        DB::table('transaksi')->insert([
+            'id_siswa' => $request->siswa_id,
+            'id_kategori' => $request->kategori_id,
+            'nominal_transaksi' => $request->nominal,
+            'tanggal_transaksi' => $request->tanggal_transaksi,
+            'waktu_transaksi' => $request->waktu_transaksi,
+            'bukti_pembayaran' => $fileResi,
+            'status_pembayaran' => $request->status,
+        ]);
+
+        return redirect('/Transaksi');
     }
+
+
 
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-        $transaksi = Transaksi::find($id);
-        return view('transaksiDashboard.show', compact('transaksi'));
+        $transaksiList = DB::table('transaksi')
+                    ->where('id','=',$id)->get();
+        return view('transaksi.show', compact('transaksiList'));
     }
 
     /**
@@ -58,9 +82,10 @@ class TransaksiController extends Controller
      */
     public function edit($id)
     {
-        $transaksi = Transaksi::find($id);
-        $kategoris = Kategori::all();
-        return view('transaksiDashboard.edit', compact('transaksi', 'kategoris'));
+        // diarahkan ke halaman edit data
+        $data = DB::table('transaksi')
+        ->where('id','=',$id)->get();
+        return view('transaksi.form_edit',compact('data'));
     }
 
     /**
@@ -68,17 +93,19 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'kategori_id' => $request->input('kategori_id'),
-            'nominal_transaksi' => $request->input('nominal_transaksi'),
-            'tanggal_transaksi' => $request->input('tanggal_transaksi'),
-            'waktu_transaksi' => $request->input('waktu_transaksi'),
-            'status_pembayaran' => $request->input('status_pembayaran'),
-        ];
-
-        Transaksi::where('id', $id)->update($data);
-
-        return redirect('/transaksi-dashboard');
+        // proses ubah data
+        DB::table('transaksi')->where('id','=',$id)->update(
+            [
+                'id_siswa'=>$request->siswa_id,
+                'kategori_id'=>$request->kategori_id,
+                'nominal_transaksi'=>$request->nominal,
+                'tanggal_transaksi'=>$request->tanggal_transaksi,
+                'waktu_transaksi'=>$request->waktu_transaksi,
+                'bukti_pembayaran'=>$request->resi,
+                'status_pembayaran'=>$request->status,
+            ]
+        );
+        return redirect('/Transaksi'.'/'.$id);
     }
 
     /**
@@ -86,7 +113,8 @@ class TransaksiController extends Controller
      */
     public function destroy($id)
     {
-        Transaksi::destroy($id);
-        return redirect('/transaksi-dashboard');
+        // menghapus data
+        DB::table('transaksi')->where('id',$id)->delete();
+        return redirect('/Transaksi');
     }
 }

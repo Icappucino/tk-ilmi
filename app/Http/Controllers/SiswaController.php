@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use DB;
 use App\Models\Siswa;
+use PDF;
 
 class SiswaController extends Controller
 {
@@ -12,9 +13,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswas = Siswa::all();
-
-        return view('siswaDashboard.index', compact('siswas'));
+        $siswaList = DB::table('siswa')->get();
+        return view('siswa.index', compact('siswaList'));
     }
 
     /**
@@ -22,7 +22,8 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('siswaDashboard.create');
+        // Mengarahkan kehalaman form
+        return view('siswa.register');
     }
 
     /**
@@ -30,23 +31,42 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'nama_siswa' => $request->input('nama_siswa'),
-            'alamat_siswa' => $request->input('alamat_siswa'),
-            'tempat_lahir' => $request->input('tempat_lahir'),
-            'tanggal_lahir' => $request->input('tanggal_lahir'),
-            'jenis_kelamin' => $request->input('jenis_kelamin'),
-            'agama' => $request->input('agama'),
-            'foto_siswa' => $request->input('foto_siswa'),
-            'foto_akte_kelahiran' => $request->input('foto_akte_kelahiran'),
-            'nama_orang_tua' => $request->input('nama_orang_tua'),
-            'alamat_orang_tua' => $request->input('alamat_orang_tua'),
-            'no_telp_orang_tua' => $request->input('no_telp_orang_tua'),
-        ];
-
-        Siswa::create($data);
-
-        return redirect('/siswa-dashboard');
+                // proses input foto
+                if(!empty($request->foto)){
+                    $request->validate(
+                        ['foto_siswa'=>'image|mimes:png,jpg|max:5120']
+                    );
+                    $fileName = $request->nama.'.'.$request->foto->extension();
+                    $request->foto->move(public_path('img'),$fileName);
+                }else{
+                    $fileName ='';
+                }
+                // proses input foto
+                if(!empty($request->akte)){
+                    $request->validate(
+                        ['foto_akte_kelahiran'=>'image|mimes:png,jpg|max:5120']
+                    );
+                    $fileAkte = $request->nama.'.'.$request->akte->extension();
+                    $request->akte->move(public_path('img'),$fileAkte);
+                }else{
+                    $fileAkte ='';
+                }
+        // Proses input data
+        DB::table('siswa')->insert(
+            [
+                'nama_siswa'=>$request->nama,
+                'alamat_siswa'=>$request->alamat,
+                'tempat_lahir'=>$request->tempat,
+                'tanggal_lahir'=>$request->tanggal,
+                'jenis_kelamin'=>$request->jenis_kelamin,
+                'agama'=>$request->agama,
+                'foto_siswa'=>$fileName,
+                'foto_akte_kelahiran'=>$fileAkte,
+                'nama_orang_tua'=>$request->nama_orang_tua,
+                'alamat_orang_tua'=>$request->alamat_orang_tua,
+            ]
+        );
+        return redirect('/Dashboard-user');
     }
 
     /**
@@ -54,17 +74,36 @@ class SiswaController extends Controller
      */
     public function show($id)
     {
-        $siswa = Siswa::find($id);
-        return view('siswaDashboard.show', compact('siswa'));
+        // menampilkan details pengarang
+        $siswaList = DB::table('siswa')
+                    ->where('id_siswa','=',$id)->get();
+        return view('siswa.show', compact('siswaList'));
     }
+
+    public function profile($id)
+    {
+        // Ambil data siswa dari database berdasarkan ID
+        $siswa = DB::table('siswa')->where('id_siswa', $id)->get();
+
+        // Jika data siswa ditemukan, tampilkan halaman profile
+        if ($siswa) {
+            return view('userDashboard.profile', compact('siswa'));
+        }
+
+        // Jika data siswa tidak ditemukan, tampilkan halaman error atau penanganan lainnya
+        return view('errors.404'); // Contoh: Tampilkan halaman 404 Not Found
+    }
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
     {
-        $siswa = Siswa::find($id);
-        return view('siswaDashboard.edit', compact('siswa'));
+        // diarahkan ke halaman edit data
+        $data = DB::table('siswa')
+        ->where('id','=',$id)->get();
+        return view('siswa.form_edit',compact('data'));
     }
 
     /**
@@ -72,23 +111,23 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'nama_siswa' => $request->input('nama_siswa'),
-            'alamat_siswa' => $request->input('alamat_siswa'),
-            'tempat_lahir' => $request->input('tempat_lahir'),
-            'tanggal_lahir' => $request->input('tanggal_lahir'),
-            'jenis_kelamin' => $request->input('jenis_kelamin'),
-            'agama' => $request->input('agama'),
-            'foto_siswa' => $request->input('foto_siswa'),
-            'foto_akte_kelahiran' => $request->input('foto_akte_kelahiran'),
-            'nama_orang_tua' => $request->input('nama_orang_tua'),
-            'alamat_orang_tua' => $request->input('alamat_orang_tua'),
-            'no_telp_orang_tua' => $request->input('no_telp_orang_tua'),
-        ];
-
-        Siswa::where('id', $id)->update($data);
-
-        return redirect('/siswa-dashboard');
+        // proses ubah data
+        DB::table('siswa')->where('id','=',$id)->update(
+            [
+                'nama_siswa'=>$request->nama,
+                'alamat_siswa'=>$request->alamat,
+                'tempat_lahir'=>$request->tempat,
+                'tanggal_lahir'=>$request->tanggal,
+                'jenis_kelamin'=>$request->jenis_kelamin,
+                'agama'=>$request->agama,
+                'foto_siswa'=>$request->foto,
+                'foto_akte_kelahiran'=>$request->akte,
+                'nama_orang_tua'=>$request->nama_orang_tua,
+                'alamat_orang_tua'=>$request->alamat_orang_tua,
+                'no_telp_orang_tua'=>$request->no_telp,
+            ]
+        );
+        return redirect('/Siswa'.'/'.$id);
     }
 
     /**
@@ -96,7 +135,41 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        Siswa::destroy($id);
-        return redirect('/siswa-dashboard');
+        // menghapus data
+        DB::table('siswa')->where('id',$id)->delete();
+        return redirect('/Siswa');
+    }
+
+    public function siswaPDF()
+    {
+
+        $siswaList = DB::table('siswa')->get();
+
+        $pdf = PDF::loadView('siswa.myPDF', ['siswaList'=>$siswaList]);
+        return $pdf->download('DataSiswa.pdf');
+    }
+
+    public function progSem1()
+    {
+
+        $data = [
+            'title' => 'download sedang di proses',
+            'date' => date('mm/dd/yy')
+        ];
+
+        $pdf = PDF::loadView('userDashboard.program-semester', $data);
+        return $pdf->download('Program Semester 1.pdf');
+    }
+
+    public function progSem2()
+    {
+
+        $data = [
+            'title' => 'download sedang di proses',
+            'date' => date('mm/dd/yy')
+        ];
+
+        $pdf = PDF::loadView('userDashboard.program-semester-2', $data);
+        return $pdf->download('Program Semester 2.pdf');
     }
 }

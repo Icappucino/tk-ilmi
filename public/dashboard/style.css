@@ -3397,3 +3397,25 @@ table.projects tr td:first-child {
     color: #fff;
     font-size: 15px;
 }
+
+.tab-mapel{
+    font-weight: 300;
+    color: #000;
+}
+.tab-head-mapel{
+    background-color: #ffd900;
+    font-weight: 700;
+    color: #000;
+}
+.mapel-sub-head{
+    font-size: 20px;
+    color: #000;
+    font-weight: 400;
+}
+.links-hub{
+    padding-right: 50px;
+}
+
+.img-gallery-style{
+    height: 120px;
+}

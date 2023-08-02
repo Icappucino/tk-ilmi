@@ -14,11 +14,25 @@
              </ul> -->
              <ul class="user_profile_dd">
                 <li>
-                   <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{asset('img/ic-prof.png')}}" alt="#" /><span class="name_user">Icappucino</span></a>
-                   <div class="dropdown-menu">
-                      <a class="dropdown-item" href="{{url('/Profile-user')}}">My Profile</a>
-                      <a class="dropdown-item" href="{{url('/')}}"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
-                   </div>
+                   <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{asset('img/nophoto.jpeg')}}" alt="#" /><span class="name_user">
+                @if(empty(Auth::user()->name))
+                {{ '' }}
+                @else
+                {{ Auth::user()->name }}
+                @endif
+                </span></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{url('/Profile-user')}}">My Profile</a>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
                 </li>
              </ul>
           </div>

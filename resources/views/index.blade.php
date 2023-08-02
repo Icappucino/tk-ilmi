@@ -21,12 +21,15 @@
     https://getbootstrap.com/docs/5.3/getting-started/download/
     =============================================================== -->
 <link href="{{asset('bootstrap/bootstrap.min.css')}}" rel="stylesheet" >
+<link href="{{asset('bootstrap/bootstrap.css.map')}}" rel="stylesheet" >
+<link href="{{asset('bootstrap/bootstrap.min.css.map')}}" rel="stylesheet" >
     <!-- Main CSS -->
 <link href="{{asset('css/style.css')}}" rel="stylesheet" >
     <!-- Icons Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Boxicons -->
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!-- =============================================
     ================={ License }====================
     ================================================
@@ -75,6 +78,8 @@
 
     <!-- Bootstrap JS -->
     <script src="{{asset('bootstrap/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('bootstrap/bootstrap.bundle.js.map')}}"></script>
+    <script src="{{asset('bootstrap/bootstrap.bundle.min.js.map')}}"></script>
     <!-- Main JS -->
     <script src="{{asset('js/main.js')}}"></script>
 </body>

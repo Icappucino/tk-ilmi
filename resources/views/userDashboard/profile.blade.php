@@ -2,18 +2,26 @@
 @section('Profile')
 <section style="background-color: #eee;">
     <div class="container py-5">
-      <div class="row">
-      </div>
-
+        @if(isset($siswa))
       <div class="row">
         <div class="col-lg-4">
-          <div class="card mb-4">
+          <div class="card mt-5">
             <div class="card-body text-center">
-              <img src="{{asset('img/ic-prof.png')}}" alt="avatar"
-                class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">Icappucino</h5>
-              <p class="text-muted mb-1">Full Stack Developer</p>
-              <p class="text-muted mb-4">Berlin, Germany</p>
+                <a href="{{route('siswa.create')}}" class="btn btn-info">
+                    <i class="bi bi-person-fill"></i> isi data siswa
+                </a>
+              @php
+                if(!empty($siswa->foto_siswa)){
+                @endphp
+                    <img src="{{asset('img')}}/{{$siswa->foto_siswa}}" width="150px">
+                @php
+                }else {
+                @endphp
+                    <img src="{{asset('img')}}/nophoto.jpeg" width="150px">
+                @php
+                }
+              @endphp
+              <h5 class="my-3">{{$siswa->nama_siswa}}</h5>
             </div>
           </div>
           <div class="card mb-4 mb-lg-0">
@@ -29,7 +37,7 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                   <p class="mb-0">Nama Wali Kelas</p>
-                  <p class="mb-0">Vika</p>
+                  <p class="mb-0">Yani Sulistiani, S.Pd</p>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                   <p class="mb-0">Status Kelengkapan Berkas</p>
@@ -47,7 +55,7 @@
                   <p class="mb-0">Nama Lengkap Siswa</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Icappucino </p>
+                  <p class="text-muted mb-0">{{$siswa->nama_siswa}} </p>
                 </div>
               </div>
               <hr>
@@ -56,7 +64,7 @@
                   <p class="mb-0">Alamat Siswa</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Btp D24 no 2</p>
+                  <p class="text-muted mb-0">{{$siswa->alamat_siswa}}</p>
                 </div>
               </div>
               <hr>
@@ -65,7 +73,7 @@
                   <p class="mb-0">Tempat lahir</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Bekasi</p>
+                  <p class="text-muted mb-0">{{$siswa->tempat_lahir}}</p>
                 </div>
               </div>
               <hr>
@@ -74,7 +82,7 @@
                   <p class="mb-0">Tanggal Lahir</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">23 Agustus 2001</p>
+                  <p class="text-muted mb-0">{{$siswa->tanggal_lahir}}</p>
                 </div>
               </div>
               <hr>
@@ -83,7 +91,7 @@
                   <p class="mb-0">Jenis Kelamin</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Laki - Laki</p>
+                  <p class="text-muted mb-0">{{$siswa->jenis_kelamin}}</p>
                 </div>
               </div>
               <hr>
@@ -92,7 +100,7 @@
                   <p class="mb-0">Agama</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Islam</p>
+                  <p class="text-muted mb-0">{{$siswa->agama}}</p>
                 </div>
               </div>
               <hr>
@@ -101,7 +109,7 @@
                   <p class="mb-0">Nama Orang tua</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Yuliana</p>
+                  <p class="text-muted mb-0">{{$siswa->nama_orang_tua}}</p>
                 </div>
               </div>
               <hr>
@@ -110,7 +118,7 @@
                   <p class="mb-0">Nomor Telepon Orang Tua</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">089512625724</p>
+                  <p class="text-muted mb-0">{{$siswa->no_telp_orang_tua}}</p>
                 </div>
               </div>
               <hr>
@@ -119,13 +127,15 @@
                   <p class="mb-0">Alamat Orang Tua</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">BTP D24 no 2</p>
+                  <p class="text-muted mb-0">{{$siswa->alamat_orang_tua}}</p>
                 </div>
               </div>
+              <!-- -->
             </div>
           </div>
         </div>
       </div>
+      @endif
     </div>
   </section>
 @endsection

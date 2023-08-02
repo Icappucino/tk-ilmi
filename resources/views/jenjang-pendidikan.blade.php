@@ -15,10 +15,12 @@
                     </div>
                     <h3 class="fw-bold text-center sub-title-jenjang">TK-A</h3>
                     <h3 class="mt-4 mb-4 title-content-jenjang">
-                        1. Detail Umur: 4-5 tahun <br>
-                        2. Rincian Biaya Sekolah: <br>
-                        3. Tujuan Pembelajaran: <br>
-                        4. Outing class: Kunjungan Museum, Kegiatan Sosial, Seminar Parenting
+                        Detail Umur: 4-5 tahun </br>
+                        Tujuan Pembelajaran: </br>
+                        </br> 1. Anak mampu menggunakan fungsi gerak (motorik kasar, halus, dan taktil) untuk mengeksplorasi dan memanipulasi berbagai objek dan lingkungan sekitar sebagai bentuk pengembangan diri.
+                        </br> 2. Anak mampu memahami berbagai informasi yang di dapat.
+                        </br> 3. Anak mampu mengomunikasikan perasaan dan pikiran secara lisan, tulisan, atau menggunakan berbagai media kreatif lainnya.
+                        </br> 4. Anak mampu mengenal angka, mengenal huruf dengan mengimplementasikan kata-kata dasaryang biasa digunakan pada percakapan sehari-hari
                     </h3>
                 </div>
             </div>
@@ -33,7 +35,6 @@
                         1. Kegiatan Pembelajaran Intrakurikuler <br>
                         2. Projek Penguatan Profil Pelajar Pancasila <br>
                         Kegiatan pembelajaran intrakurikuler dirancang agar anak dapat mencapai kemampuan yang tertuang di dalam Capaian Pembelajaran.
-
                     </h3>
                 </div>
             </div>
@@ -44,10 +45,12 @@
                     </div>
                     <h3 class="fw-bold text-center sub-title-jenjang">TK-B</h3>
                     <h3 class="mt-4 mb-4 title-content-2-jenjang">
-                        1. Detail Umur: 5-6 tahun  <br>
-                        2. Rincian Biaya Sekolah: <br>
-                        3. Tujuan Pembelajaran:  <br>
-                        4. Outing class: Kunjungan Museum, Kegiatan Sosial, Seminar Parenting, Manasik Haji
+                        Detail Umur: 5-6 tahun <br>
+                        Tujuan Pembelajaran: <br>
+                        <br> 1. Anak mampu menunjukkan minat, kegemaran, dan berpartisipasi dalam kegiatan pramembaca dan pramenulis.
+                        <br> 2. Anak menunjukkan kemampuan dasar berpikir kritis, kreatif, dan kolaboratif.
+                        <br> 3. Anak mengenali dan menggunakan konsep pramatematika untuk memecahkan masalah di dalam kehidupan sehari-hari.
+                        <br> 4. Anak mengenal dan memiliki perilaku positif terhadap diri dan lingkungan (keluarga, sekolah, masyarakat, dan negara)
                     </h3>
                 </div>
             </div>

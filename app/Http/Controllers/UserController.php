@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Models\User;
 
 class UserController extends Controller
@@ -12,9 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        return view('userDashboard.Dashboard', compact('users'));
+        $userList = DB::table('user')->get();
+        return view('user.index', compact('userList'));
     }
 
     /**
@@ -22,7 +22,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('userDashboard.Dashboard');
+        // Mengarahkan kehalaman form
+        return view('siswa.daftar');
     }
 
     /**
@@ -30,15 +31,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'nama' => $request->input('nama'),
-            'password' => $request->input('password'),
-            'no_telp_orang_tua' => $request->input('number'),
-        ];
+    // Cek apakah username sudah digunakan
+    $usernameExists = DB::table('user')->where('username', $request->nama)->exists();
 
-        User::create($data);
+    if ($usernameExists) {
+        // Tampilkan sweet alert "username sudah digunakan"
+        return redirect()->back()->with('status', 'username_exists');
+    }
 
-        return redirect('/Dashboard');
+    // Jika username belum digunakan, proses input data
+    DB::table('user')->insert([
+        'username' => $request->nama,
+        'password' => $request->password,
+        'no_telp_orang_tua' => $request->no_telp,
+    ]);
+
+    return redirect('/Form-Siswa')->with('status', 'success');
     }
 
     /**
@@ -46,8 +54,10 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::find($id);
-        return view('userDashboard.profile', compact('user'));
+        // menampilkan details pengarang
+        $userList = DB::table('user')
+                ->where('id','=',$id)->get();
+        return view('user.show', compact('userList'));
     }
 
     /**
@@ -55,8 +65,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::find($id);
-        return view('userDashboard.form_edit', compact('user'));
+        // diarahkan ke halaman edit data
+        $data = DB::table('user')
+                    ->where('id','=',$id)->get();
+        return view('user.form_edit',compact('data'));
     }
 
     /**
@@ -64,15 +76,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = [
-            'username' => $request->input('nama'),
-            'password' => $request->input('password'),
-            'no_telp_orang_tua' => $request->input('number'),
-        ];
-
-        User::where('id', $id)->update($data);
-
-        return redirect('/Dashboard-user');
+        // proses ubah data
+        DB::table('user')->where('id','=',$id)->update(
+            [
+                'username'=>$request->nama,
+                'password'=>$request->password,
+                'no_telp_orang_tua'=>$request->no_telp,
+            ]
+        );
+        return redirect('/User'.'/'.$id);
     }
 
     /**
@@ -80,7 +92,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        User::destroy($id);
-        return redirect('/Dashboard-user');
+        // menghapus data
+        DB::table('siswa')->where('id',$id)->delete();
+        return redirect('/Siswa');
     }
 }

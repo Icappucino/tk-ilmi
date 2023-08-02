@@ -29,6 +29,8 @@
       <!-- custom css -->
       <link href="{{asset('./dashboard/css/custom.css')}}" rel="stylesheet" >
       <!-- Bootstrap Icon -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+      <!-- BoxIcons Icon -->
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -50,6 +52,7 @@
             @yield('Gallery')
             @yield('login')
             @yield('register')
+            @yield('RiwayatPembayaran')
             </div>
          </div>
       </div>

@@ -41,6 +41,34 @@
                 </div>
             </div>
         </div>
+        <!-- Carousel Section -->
+        <div class="row mt-5">
+            <div class="col-md-12 text-center mb-5">
+                <h3 class="fw-bold sub-title"><i class="bi bi-image-fill"></i> Galeri Kegiatan</h3>
+            </div>
+        </div>
+<!-- Bagian Carousel -->
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center position-relative">
+        <div class="wrapper">
+            <i id="left" class="fa-solid fa-angle-left"></i>
+            <div class="carousel">
+              <img src="{{asset('img/kegiatan/keg-1.jpg')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-2.jpg')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-3.jpg')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-4.jpg')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-5.jpg')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-6.jpg')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-7.png')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-8.png')}}" alt="img" draggable="false">
+              <img src="{{asset('img/kegiatan/keg-9.png')}}" alt="img" draggable="false">
+            </div>
+            <i id="right" class="fa-solid fa-angle-right"></i>
+          </div>
+    </div>
+</div>
+<!-- Bagian Carousel -->
+
         <div class="row pt-5">
             <div class="col-12 text-center pb-10">
                 <h3 class="fw-bold sub-title"><i class="bi bi-building-fill"></i> Unit Sekolah</h3>

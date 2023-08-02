@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Models\MataPelajaran;
 
 class MataPelajaranController extends Controller
@@ -12,9 +13,8 @@ class MataPelajaranController extends Controller
      */
     public function index()
     {
-        $mataPelajarans = MataPelajaran::all();
-
-        return view('mataPelajaranDashboard.index', compact('mataPelajarans'));
+        $mapelList = DB::table('matapelajaran')->get();
+        return view('mapel.index', compact('mapelList'));
     }
 
     /**

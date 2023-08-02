@@ -23,7 +23,7 @@
                    <div class="row">
                       <div class="col-sm-4 col-md-3 margin_bottom_30">
                          <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g1.jpg" alt="#" /></a>
+                            <a data-fancybox="gallery" href="#"><img class="img-responsive img-gallery-style" src="{{asset('img/kegiatan/keg-1.jpg')}}" alt="#" /></a>
                          </div>
                          <div class="heading_section">
                             <h4>Nama Kegiatan</h4>
@@ -31,7 +31,7 @@
                       </div>
                       <div class="col-sm-4 col-md-3 margin_bottom_30">
                          <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g2.jpg" alt="#" /></a>
+                            <a data-fancybox="gallery" href="#"><img class="img-responsive img-gallery-style" src="{{asset('img/kegiatan/keg-7.png')}}" alt="#" /></a>
                          </div>
                          <div class="heading_section">
                             <h4>Nama Kegiatan</h4>
@@ -39,7 +39,7 @@
                       </div>
                       <div class="col-sm-4 col-md-3 margin_bottom_30">
                          <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g3.jpg" alt="#" /></a>
+                            <a data-fancybox="gallery" href="#"><img class="img-responsive img-gallery-style" src="{{asset('img/kegiatan/keg-8.png')}}" alt="#" /></a>
                          </div>
                          <div class="heading_section">
                             <h4>Nama Kegiatan</h4>
@@ -47,76 +47,12 @@
                       </div>
                       <div class="col-sm-4 col-md-3 margin_bottom_30">
                          <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g4.jpg" alt="#" /></a>
+                            <a data-fancybox="gallery" href="#"><img class="img-responsive img-gallery-style" src="{{asset('img/kegiatan/keg-9.png')}}" alt="#" /></a>
                          </div>
                          <div class="heading_section">
                             <h4>Nama Kegiatan</h4>
                          </div>
                       </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                         <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g5.jpg" alt="#" /></a>
-                         </div>
-                         <div class="heading_section">
-                            <h4>Nama Kegiatan</h4>
-                         </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                         <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g6.jpg" alt="#" /></a>
-                         </div>
-                         <div class="heading_section">
-                            <h4>Nama Kegiatan</h4>
-                         </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                         <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g7.jpg" alt="#" /></a>
-                         </div>
-                         <div class="heading_section">
-                            <h4>Nama Kegiatan</h4>
-                         </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                         <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g8.jpg" alt="#" /></a>
-                         </div>
-                         <div class="heading_section">
-                            <h4>Nama Kegiatan</h4>
-                         </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                         <div class="column">
-                            <a data-fancybox="gallery" href={{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g9.jpg" alt="#" /></a>
-                         </div>
-                         <div class="heading_section">
-                            <h4>Nama Kegiatan</h4>
-                         </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                         <div class="column">
-                            <a data-fancybox="gallery" href="{{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g10.jpg" alt="#" /></a>
-                         </div>
-                         <div class="heading_section">
-                            <h4>Nama Kegiatan</h4>
-                         </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                         <div class="column">
-                            <a data-fancybox="gallery" href="{{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g11.jpg" alt="#" /></a>
-                         </div>
-                         <div class="heading_section">
-                            <h4>Nama Kegiatan</h4>
-                         </div>
-                      </div>
-                      <div class="col-sm-4 col-md-3 margin_bottom_30">
-                        <div class="column">
-                           <a data-fancybox="gallery" href="{{asset('img/logo-tk.png')}}"><img class="img-responsive" src="images/layout_img/g11.jpg" alt="#" /></a>
-                        </div>
-                        <div class="heading_section">
-                           <h4>Nama Kegiatan</h4>
-                        </div>
-                     </div>
                    </div>
                 </div>
              </div>

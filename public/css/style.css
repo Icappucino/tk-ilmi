@@ -377,6 +377,7 @@ h3{
     background-color: var(--secondary);
     padding: var(--HL2);
     box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.05);
+    overflow-y: scroll;
 }
 .circle-icon-jenjang{
     width: var(--TL);
@@ -471,7 +472,6 @@ h3{
     font-size: var(--HL2);
     padding-right: 5px;
 }
-
 .bi-whatsapp{
     color: var(--rvsi-2);
     padding: 5px;
@@ -493,4 +493,102 @@ h3{
 .mail{
     color: var(--dark);
     text-decoration: none;
+}
+
+
+
+
+/* ============================ */
+/* ===={ Setting Carousel }==== */
+/* ============================ */
+
+.wrapper{
+    display: flex;
+    max-width: 1200px;
+    position: relative;
+  }
+  .wrapper i{
+    top: 50%;
+    height: 44px;
+    width: 44px;
+    color: #343F4F;
+    cursor: pointer;
+    font-size: 1.15rem;
+    position: absolute;
+    text-align: center;
+    line-height: 44px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.1s linear;
+  }
+  .wrapper i:active{
+    transform: translateY(-50%) scale(0.9);
+  }
+  .wrapper i:hover{
+    background: #f2f2f2;
+  }
+  .wrapper i:first-child{
+    left: -22px;
+    display: none;
+  }
+  .wrapper i:last-child{
+    right: -22px;
+  }
+  .wrapper .carousel{
+    font-size: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+  }
+  .carousel.dragging{
+    cursor: grab;
+    scroll-behavior: auto;
+  }
+  .carousel.dragging img{
+    pointer-events: none;
+  }
+  .carousel img{
+    height: 340px;
+    object-fit: cover;
+    user-select: none;
+    opacity: 20%;
+    transition: all ease-in .3s;
+    margin-left: 14px;
+    width: calc(100% / 3);
+  }
+  .carousel img:first-child{
+    margin-left: 0px;
+  }
+  .carousel img:hover{
+    opacity: 100%;
+    height: 350px;
+  }
+  @media screen and (max-width: 900px) {
+    .carousel img{
+      width: calc(100% / 2);
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .carousel img{
+      width: 100%;
+    }
+  }
+
+
+.button-left{
+    border: none;
+    border-radius: 50%;
+    width: 41px;
+    height: 41px;
+    background-color: var(--bg);
+}
+
+.button-right{
+    border: none;
+    border-radius: 50%;
+    width: 41px;
+    height: 41px;
+    background-color: var(--bg);
 }

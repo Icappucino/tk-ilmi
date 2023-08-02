@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Models\Admin;
 
 class AdminController extends Controller
@@ -12,9 +13,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::all();
-
-        return view('adminDashboard.index', compact('admins'));
+        $adminList = DB::table('admin')->get();
+        return view('admin.index', compact('adminList'));
     }
 
     /**
@@ -22,7 +22,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('adminDashboard.create');
+        // Mengarahkan kehalaman form
+        return view('admin.create');
     }
 
     /**
@@ -30,19 +31,19 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'nama_admin' => $request->input('nama_admin'),
-            'no_telp_admin' => $request->input('no_telp_admin'),
-            'alamat_admin' => $request->input('alamat_admin'),
-            'foto_admin' => $request->input('foto_admin'),
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-            'email' => $request->input('email'),
-        ];
-
-        Admin::create($data);
-
-        return redirect('/admin-dashboard');
+        // Proses input data
+        DB::table('admin')->insert(
+            [
+                'nama_admin'=>$request->nama,
+                'no_telp_admin'=>$request->no_hp,
+                'alamat_admin'=>$request->alamat,
+                'foto_admin'=>$request->foto,
+                'username'=>$request->username,
+                'password'=>$request->password,
+                'email'=>$request->email,
+            ]
+        );
+        return redirect('/Admin');
     }
 
     /**
@@ -50,8 +51,10 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        $admin = Admin::find($id);
-        return view('adminDashboard.show', compact('admin'));
+    // menampilkan details pengarang
+    $adminList = DB::table('admin')
+                ->where('id','=',$id)->get();
+    return view('admin.show', compact('adminList'));
     }
 
     /**
@@ -59,8 +62,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $admin = Admin::find($id);
-        return view('adminDashboard.edit', compact('admin'));
+        // diarahkan ke halaman edit data
+        $data = DB::table('admin')
+        ->where('id','=',$id)->get();
+        return view('admin.form_edit',compact('data'));
     }
 
     /**
@@ -68,19 +73,19 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'nama_admin' => $request->input('nama_admin'),
-            'no_telp_admin' => $request->input('no_telp_admin'),
-            'alamat_admin' => $request->input('alamat_admin'),
-            'foto_admin' => $request->input('foto_admin'),
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-            'email' => $request->input('email'),
-        ];
-
-        Admin::where('id', $id)->update($data);
-
-        return redirect('/admin-dashboard');
+        // proses ubah data
+        DB::table('admin')->where('id','=',$id)->update(
+            [
+                'nama_admin'=>$request->nama,
+                'no_telp_admin'=>$request->no_hp,
+                'alamat_admin'=>$request->alamat,
+                'foto_admin'=>$request->foto,
+                'username'=>$request->username,
+                'password'=>$request->password,
+                'email'=>$request->email,
+            ]
+        );
+        return redirect('/Admin'.'/'.$id);
     }
 
     /**
@@ -88,7 +93,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        Admin::destroy($id);
-        return redirect('/admin-dashboard');
+        // menghapus data
+        DB::table('admin')->where('id',$id)->delete();
+        return redirect('/Admin');
     }
 }

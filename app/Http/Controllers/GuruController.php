@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Models\Guru;
 
 class GuruController extends Controller
@@ -12,9 +13,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $gurus = Guru::all();
-
-        return view('guruDashboard.index', compact('gurus'));
+        $guruList = DB::table('guru')->get();
+        return view('pengajar.index', compact('guruList'));
     }
 
     /**
@@ -22,7 +22,8 @@ class GuruController extends Controller
      */
     public function create()
     {
-        return view('guruDashboard.create');
+        // Mengarahkan kehalaman form
+        return view('pengajar.create');
     }
 
     /**
@@ -30,16 +31,17 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'nama_guru' => $request->input('nama_guru'),
-            'no_telp_guru' => $request->input('no_telp_guru'),
-            'alamat_guru' => $request->input('alamat_guru'),
-            'foto_guru' => $request->input('foto_guru'),
-        ];
-
-        Guru::create($data);
-
-        return redirect('/guru-dashboard');
+                // Proses input data
+                DB::table('guru')->insert(
+                    [
+                        'nama_guru'=>$request->nama_guru,
+                        'alamat_guru'=>$request->alamat,
+                        'jenis_kelamin'=>$request->no_telp,
+                        'foto_guru'=>$request->foto,
+                        'no_telp_guru'=>$request->no_telp,
+                    ]
+                );
+                return redirect('/Guru');
     }
 
     /**
@@ -47,8 +49,10 @@ class GuruController extends Controller
      */
     public function show($id)
     {
-        $guru = Guru::find($id);
-        return view('guruDashboard.show', compact('guru'));
+    // menampilkan details pengarang
+    $guruList = DB::table('guru')
+                ->where('id','=',$id)->get();
+    return view('pengajar.show', compact('guruList'));
     }
 
     /**
@@ -56,8 +60,10 @@ class GuruController extends Controller
      */
     public function edit($id)
     {
-        $guru = Guru::find($id);
-        return view('guruDashboard.edit', compact('guru'));
+        // diarahkan ke halaman edit data
+        $data = DB::table('guru')
+        ->where('id','=',$id)->get();
+        return view('pengajar.form_edit',compact('data'));
     }
 
     /**
@@ -65,16 +71,17 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = [
-            'nama_guru' => $request->input('nama_guru'),
-            'no_telp_guru' => $request->input('no_telp_guru'),
-            'alamat_guru' => $request->input('alamat_guru'),
-            'foto_guru' => $request->input('foto_guru'),
-        ];
-
-        Guru::where('id', $id)->update($data);
-
-        return redirect('/guru-dashboard');
+        // proses ubah data
+        DB::table('guru')->where('id','=',$id)->update(
+            [
+                'nama_guru'=>$request->nama_guru,
+                'alamat_guru'=>$request->alamat,
+                'jenis_kelamin'=>$request->no_telp,
+                'foto_guru'=>$request->foto,
+                'no_telp_guru'=>$request->no_telp,
+            ]
+        );
+        return redirect('/Guru'.'/'.$id);
     }
 
     /**
@@ -82,7 +89,8 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        Guru::destroy($id);
-        return redirect('/guru-dashboard');
+        // menghapus data
+        DB::table('guru')->where('id',$id)->delete();
+        return redirect('/Guru');
     }
 }

@@ -33,7 +33,7 @@
                                   </div>
                                </div>
                                <div class="price_table_bottom">
-                                  <div class="center"><a class="main_bt" href="#">Bayar Sekarang</a></div>
+                                  <div class="center"><a class="main_bt" href="{{route('transaksi.create')}}">Bayar Sekarang</a></div>
                                </div>
                             </div>
                          </div>
@@ -52,7 +52,7 @@
                                   </div>
                                </div>
                                <div class="price_table_bottom">
-                                  <div class="center"><a class="main_bt" href="#">Bayar Sekarang</a></div>
+                                  <div class="center"><a class="main_bt" href="{{route('transaksi.create')}}">Bayar Sekarang</a></div>
                                </div>
                             </div>
                          </div>
@@ -71,28 +71,49 @@
                                   </div>
                                </div>
                                <div class="price_table_bottom">
-                                  <div class="center"><a class="main_bt" href="#">Bayar Sekarang</a></div>
+                                  <div class="center"><a class="main_bt" href="{{route('transaksi.create')}}">Bayar Sekarang</a></div>
                                </div>
                             </div>
                          </div>
                       </div>
                       <!-- end column price -->
-                      <!-- column price -->
+                    <!-- column price -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="table_price full">
+                           <div class="inner_table_price">
+                              <div class="price_table_head yellow_bg">
+                                 <h2>Kegiatan</h2>
+                              </div>
+                              <div class="price_table_inner">
+                                 <div class="cont_table_price_blog">
+                                    <p class="yellow_color"> <span class="price_no"></span> 400.000,-</p>
+                                 </div>
+                              </div>
+                              <div class="price_table_bottom">
+                                 <div class="center"><a class="main_bt" href="{{route('transaksi.create')}}">Bayar Sekarang</a></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                      <!-- end column price -->
+                     <!-- column price -->
                       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                         <div class="table_price full">
-                            <div class="inner_table_price">
-                               <div class="price_table_head yellow_bg">
-                                  <h2>Kegiatan</h2>
-                               </div>
-                               <div class="price_table_inner">
-                                  <div class="cont_table_price_blog">
-                                     <p class="yellow_color"> <span class="price_no"></span> 400.000,-</p>
-                                  </div>
-                               </div>
-                               <div class="price_table_bottom">
-                                  <div class="center"><a class="main_bt" href="#">Bayar Sekarang</a></div>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
+                        <div class="table_price full">
+                           <div class="inner_table_price">
+                              <div class="price_table_head red_bg">
+                                 <h2>Biaya Pembangunan</h2>
+                              </div>
+                              <div class="price_table_inner">
+                                 <div class="cont_table_price_blog">
+                                    <p class="red_color"> <span class="price_no"></span> 800.000,-</p>
+                                 </div>
+                              </div>
+                              <div class="price_table_bottom">
+                                 <div class="center"><a class="main_bt" href="{{route('transaksi.create')}}">Bayar Sekarang</a></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                      <!-- end column price -->
+
 @endsection
